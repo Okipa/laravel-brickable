@@ -142,36 +142,6 @@ class BrickablesTest extends BrickableTestCase
     }
 
     /** @test */
-    public function it_can_display_model_bricks_admin_panel_html(): void
-    {
-        view()->addNamespace('laravel-brickables', 'tests/views');
-        $brickable = new class extends Brickable {
-            public function setBrickViewPath(): string
-            {
-                return 'laravel-brickables::brick-test';
-            }
-
-            public function validateStoreInputs(): array
-            {
-                return [];
-            }
-
-            public function validateUpdateInputs(): array
-            {
-                return [];
-            }
-        };
-        config()->set('brickables.registered', [get_class($brickable)]);
-        Brickables::routes();
-        $page = factory(Page::class)->create();
-        $page->addBrick(get_class($brickable), ['custom' => 'dummy']);
-        self::assertEquals(
-            view('laravel-brickables::admin.panel.layout', ['model' => $page])->render(),
-            $page->displayAdminPanel()
-        );
-    }
-
-    /** @test */
     public function it_can_cast_bricks_to_their_brickable_related_brick_model(): void
     {
         $brickableOne = new class extends Brickable {

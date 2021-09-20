@@ -1,5 +1,8 @@
 @php($bricks = $model->getBricks())
 <div class="card-body">
+    @foreach(config('brickables.additional_stylesheets.admin_panel', []) as $stylesheet)
+        <link href="{{ $stylesheet }}" rel="stylesheet"/>
+    @endforeach
     @if($bricks->isEmpty())
         @include('laravel-brickables::admin.panel.empty')
     @else
@@ -17,7 +20,9 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    {{ $brick }}
+                    <div class="brick">
+                        {{ $brick }}
+                    </div>
                 </div>
             </div>
         @endforeach

@@ -9,11 +9,6 @@ use Illuminate\Support\ServiceProvider;
 
 class BrickablesServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     *
-     * @param \Illuminate\Filesystem\Filesystem $filesystem
-     */
     public function boot(Filesystem $filesystem): void
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel-brickables');
@@ -30,13 +25,6 @@ class BrickablesServiceProvider extends ServiceProvider
         $this->declareBladeDirectives();
     }
 
-    /**
-     * Returns existing migration file if found, else uses the current timestamp.
-     *
-     * @param Filesystem $filesystem
-     *
-     * @return string
-     */
     protected function getMigrationFileName(Filesystem $filesystem): string
     {
         $timestamp = date('Y_m_d_His');
@@ -62,9 +50,6 @@ class BrickablesServiceProvider extends ServiceProvider
         });
     }
 
-    /**
-     * Register the application services.
-     */
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/brickables.php', 'brickables');

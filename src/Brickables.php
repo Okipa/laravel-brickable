@@ -46,6 +46,7 @@ class Brickables
     public function routes(Closure $additionalRoutes = null): void
     {
         Route::middleware([
+            'web',
             CRUDBrickable::class,
             SubstituteBindings::class,
         ])->group(function () use ($additionalRoutes) {

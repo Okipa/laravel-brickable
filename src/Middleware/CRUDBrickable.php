@@ -10,15 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CRUDBrickable
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure $next
-     *
-     * @return mixed
-     * @throws \Exception
-     */
     public function handle(Request $request, Closure $next)
     {
         if (! $request->brick) {

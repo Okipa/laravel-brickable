@@ -32,6 +32,7 @@ class BricksControllerTest extends BrickableTestCase
     /** @test */
     public function create_action_displays_brickable_admin_view_with_data(): void
     {
+        $this->withoutExceptionHandling();
         Brickables::routes();
         $page = factory(Page::class)->create();
         $this->call('GET', 'brick/create', [

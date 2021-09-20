@@ -13,7 +13,7 @@
                 </div>
                 <select class="custom-select{{ optional($errors ?? null)->has('brickable_type') ? ' is-invalid' : null }}"
                         name="brickable_type">
-                    <option value="">@lang('validation.attributes.brickable_type')</option>
+                    <option value="">{{ __('validation.attributes.brickable_type') }}</option>
                     @foreach($additionableBrickables as $brickable)
                         <option value="{{ get_class($brickable) }}">{{ $brickable->getLabel() }}</option>
                     @endforeach
@@ -23,8 +23,8 @@
                 @endif
             </div>
         </div>
-        <button class="btn btn-primary" type="submit" title="@lang('Add')">
-            <i class="fas fa-plus-circle fa-fw"></i> @lang('Add')
+        <button class="btn btn-primary" type="submit" title="{{ __('Add') }}">
+            <i class="fas fa-plus-circle fa-fw"></i> {{ __('Add') }}
         </button>
     </form>
 @endif

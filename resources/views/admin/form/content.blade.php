@@ -2,10 +2,10 @@
 <div class="card">
     <div class="card-header">
         <h2 class="m-0">
-            @if(View::hasSection('title'))
+            @hasSection('title')
                 @yield('title')
             @else
-                @lang('Brick data')
+                {{ __('Brick data') }}
             @endif
         </h2>
     </div>
@@ -20,7 +20,7 @@
             <input type="hidden" name="brickable_type" value="{{ get_class($brickable) }}">
             <input type="hidden" name="admin_panel_url" value="{{ $adminPanelUrl }}">
             @yield('inputs')
-            @if(View::hasSection('actions'))
+            @hasSection('actions')
                 @yield('actions')
             @else
                 @include('laravel-brickables::admin.form.actions')

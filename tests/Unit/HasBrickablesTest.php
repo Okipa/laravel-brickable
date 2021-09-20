@@ -669,4 +669,42 @@ class HasBrickablesTest extends BrickableTestCase
             $page->displayAdminPanel()
         );
     }
+
+    /** @test */
+    public function it_can_load_additional_stylesheets_on_admin_panel_html(): void
+    {
+        Brickables::routes();
+        view()->addNamespace('laravel-brickables', 'tests/views');
+        config()->set('brickables.additional_stylesheets.admin_panel', [
+            '/first/path/to/test/stylesheet.css',
+            '/second/path/to/test/stylesheet.css',
+        ]);
+        $brickable = new class extends Brickable {
+            public function setBrickViewPath(): string
+            {
+                return 'laravel-brickables::brick-test';
+            }
+
+            public function validateStoreInputs(): array
+            {
+                return [];
+            }
+
+            public function validateUpdateInputs(): array
+            {
+                return [];
+            }
+        };
+        config()->set('brickables.registered', [get_class($brickable)]);
+        $page = factory(Page::class)->create();
+        $page->addBrick(get_class($brickable), ['custom' => 'dummy']);
+        self::assertStringContainsString(
+            '<link href="/first/path/to/test/stylesheet.css" rel="stylesheet"/>',
+            $page->displayAdminPanel()
+        );
+        self::assertStringContainsString(
+            '<link href="/second/path/to/test/stylesheet.css" rel="stylesheet"/>',
+            $page->displayAdminPanel()
+        );
+    }
 }

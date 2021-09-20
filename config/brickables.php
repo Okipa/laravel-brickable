@@ -18,7 +18,18 @@ return [
     'registered' => [
         Okipa\LaravelBrickables\Brickables\OneTextColumn::class,
         Okipa\LaravelBrickables\Brickables\TwoTextColumns::class,
-        // Add additional brickables here ...
+        // Add additional brickables here...
+    ],
+
+    /*
+     * In order to give bricks the style they look on the front on your brickables admin panel,
+     * you may want to embed some front stylesheets.
+     */
+    'additional_stylesheets' => [
+        'admin_panel' => [
+            // Add additional stylesheets here...
+            // mix('your/frontend/styles'),
+        ],
     ],
 
 ];

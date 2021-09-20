@@ -396,10 +396,12 @@ Use the ready-to-use admin panel to manage related-model content bricks:
 {!! $page->displayAdminPanel() !!}
 ```
 
-Customize the admin panel views by [publishing them](#views).
+To give bricks the style they have on the front, you may be interested to load frontend stylesheets in the `brickables.additional_stylesheets.admin_panel` config value. These stylesheets will be loaded on top of the brickables admin panel.
 
 **:bulb: Tips**
 
+* Customize the admin panel views by [publishing them](#views)
+* To prevent you entire admin interface from taking styles from the front, please note that you should always load you brickables admin panel and the end of your pages
 * It is highly recommended adding a javascript confirmation request to intercept the content bricks delete action, otherwise the removal action will be directly executed without asking the user agreement.
 
 ### Create your own brickable

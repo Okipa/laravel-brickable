@@ -2,16 +2,12 @@
 
 namespace Okipa\LaravelBrickables\Tests\Controllers;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class BricksController extends \Okipa\LaravelBrickables\Controllers\BricksController
 {
-    /**
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function create(Request $request)
+    public function create(Request $request): View
     {
         $brick = null;
         /** @var \Okipa\LaravelBrickables\Abstracts\Brickable $brickable */

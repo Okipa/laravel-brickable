@@ -2,6 +2,7 @@
 
 namespace Okipa\LaravelBrickables\Controllers;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -10,12 +11,7 @@ use Okipa\LaravelBrickables\Models\Brick;
 
 class BricksController extends Controller
 {
-    /**
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function create(Request $request)
+    public function create(Request $request): View
     {
         $brick = null;
         /** @var \Okipa\LaravelBrickables\Contracts\HasBrickables $model */
@@ -71,13 +67,7 @@ class BricksController extends Controller
             ]));
     }
 
-    /**
-     * @param \Okipa\LaravelBrickables\Models\Brick $brick
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit(Brick $brick, Request $request)
+    public function edit(Brick $brick, Request $request): View
     {
         $brick = Brickables::castBrick($brick);
         /** @var \Okipa\LaravelBrickables\Contracts\HasBrickables $model */
